@@ -1,26 +1,84 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text } from "react-native-elements";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, FlatList, TouchableOpacity, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import newsApi from "../api/newsApi";
+import News from '../components/News';
 
 const HomeScreen = ({ navigation }) => {
+
+  const [headlines, setHeadlines] = useState([]);
+
+  async function getHeadlines() {
+    try {
+      const response = await newsApi.get('top-headlines', {
+        params: {
+          country: 'br',
+          pageSize: 100
+        }
+      });
+      setHeadlines(response.data.articles);
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    getHeadlines()
+  }, []);
+
   return (
     <>
       <View style={styles.container}>
-        <Text>Bem vindo ao newsApp</Text>
         <StatusBar style="auto" />
+
+        <FlatList
+          data = {headlines}
+          keyExtractor = {(item) => item.title}
+          renderItem = {({item}) => {
+            return (
+              <View style={styles.content}>
+                <TouchableOpacity
+                  onPress = {() => navigation.navigate("News Details", {
+                    title: item.title
+                  })}
+                >
+                  <News 
+                    props = {item}
+                  />
+                </TouchableOpacity>
+              </View>
+            )
+          }}
+          />
+
       </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#4682B4",
   },
+
+  content: {
+    marginHorizontal: 10,
+    marginTop: 20,
+    padding: 10,
+
+    borderRadius: 10,
+
+    backgroundColor: '#FFFFFF',
+
+    elevation: 15,
+    shadowOffset: { height: 5, width: 5 },
+    shadowOpacity: 0.3,
+  },
+
 });
 
 export default HomeScreen;
