@@ -16,11 +16,21 @@ const HomeStackScreen = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
+        name="Headlines"
         component={HomeScreen}
-        options={{
-          headerShown: false
-        }}
+      />
+      <Stack.Screen name="News Details" component={NewsDetailsScreen} />
+    </Stack.Navigator>
+  );
+};
+
+const BookmarkStackScreen = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Bookmarked"
+        component={BookmarkedScreen}
+        
       />
       <Stack.Screen name="News Details" component={NewsDetailsScreen} />
     </Stack.Navigator>
@@ -46,6 +56,7 @@ export default function App() {
                 tabBarIcon: ({ color, size }) => (
                   <Ionicons name="newspaper-outline" color={color} size={size} />
                 ),
+                headerShown: false,
               }}
           />
           <Tab.Screen name="Search" component={SearchScreen}
@@ -56,12 +67,13 @@ export default function App() {
                 ),
               }}
           />
-          <Tab.Screen name="Bookmarked" component={BookmarkedScreen} 
+          <Tab.Screen name="Saved" component={BookmarkStackScreen} 
               options={{
                 tabBarLabel: 'Bookmarked',
                 tabBarIcon: ({ color, size }) => (
                   <Ionicons name="heart" color={color} size={size} />
                 ),
+                headerShown: false,
               }}
           />
         </Tab.Navigator>
