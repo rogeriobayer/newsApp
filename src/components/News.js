@@ -36,66 +36,94 @@ const News = ({ props }) => {
 
     return (
         <View style={styles.container}>
-                <Image 
+            <View style={styles.titleContainer}>
+                <View style={styles.imageBottom}><Image 
                     style={styles.newsImage}
                     source={{
                         uri: props.urlToImage,
                     }}
-                />
+                /></View>
                 <Text style={styles.newsTitle}>{props.title}</Text>
-                <View style={styles.newsInfo}>
-                    <Text style={styles.newsDate}>{formattedDate}</Text>
-                    <Text style={styles.sourceName}>{props.source.name}</Text> 
-                </View>
                 <TouchableOpacity
                     onPress={() => {
                         controlBookmark()   //chama funcao que controla icone
                     }}>
-                    <Ionicons name={bookmarked?("bookmark"):("bookmark-outline")} style={styles.icon}/>
+                    <Ionicons name={bookmarked?("md-bookmark-sharp"):("bookmark-outline")} style={styles.bookmarkIcon}/>
                 </TouchableOpacity>
+            </View>               
+            <View style={styles.newsInfo}>
+                <Text style={styles.newsDate}>{formattedDate}</Text>
+                <Text style={styles.div}>  |  </Text>
+                <Text style={styles.sourceName}>{props.source.name}</Text> 
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    
     container: {
         flex: 1,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        marginHorizontal: 15,
+        borderBottomColor: '#2196f3',
+        borderBottomWidth: 2,
+        paddingBottom: 10,
+        marginBottom: 10,
+        marginTop: 5,
     },
-
+    titleContainer: {
+        flexDirection: 'row'
+    },
+    infoBlock: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
     newsImage: {
-        height: 200,
-        width: "100%",
-        borderRadius: 10,
+        height: 85,
+        width: 120,
+        borderTopLeftRadius: 5,
+        borderTopRightRadius: 5,
     },
-
+    imageBottom: {
+        borderBottomWidth: 7,
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
+        borderColor: '#2196f3',
+    },
     newsTitle: {
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: 'bold',
-        textAlign: 'center',
-        marginVertical: 10,
+        flex: 1,
+        marginLeft: 10,
     },
 
     newsInfo: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingHorizontal: 10,
         marginTop: 5,
     },
-
     newsDate: {
         fontWeight: 'bold',
         fontSize: 15,
     },
-
     sourceName: {
         fontWeight: 'bold',
         fontSize: 15,
+        color: '#2196f3',
+        flex: 1,
+    },
+    div: {
+        fontSize: 15,
+        color: '#2196f3',
+        fontWeight: 'bold',
     },
     icon: {
-        fontSize: 20,
+        fontSize: 17,
+    },
+    bookmarkIcon: {
+        fontSize: 30,
+        alignItems: 'center',
+        color: '#2196f3',
     }
 });
 
