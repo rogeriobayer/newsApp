@@ -35,7 +35,7 @@ const HomeScreen = ({ navigation }) => {
 
         <FlatList
           data = {headlines}
-          keyExtractor = {(item) => item.title}
+          keyExtractor = {(item) => item.url}
           renderItem = {({item}) => {
             return (
               <View>
@@ -51,8 +51,7 @@ const HomeScreen = ({ navigation }) => {
               </View>
             )
           }}
-          />
-
+        />
       </View>
     </>
   );
@@ -64,20 +63,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     paddingTop: 10,
-  },
-
-  content: {
-    marginHorizontal: 10,
-    marginTop: 20,
-    padding: 10,
-
-    borderRadius: 10,
-
-    backgroundColor: '#FFFFFF',
-
-    elevation: 15,
-    shadowOffset: { height: 5, width: 5 },
-    shadowOpacity: 0.3,
   },
 
 });

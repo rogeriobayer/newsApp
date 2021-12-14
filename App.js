@@ -18,10 +18,7 @@ const Tab = createBottomTabNavigator();
 const HomeStackScreen = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Headlines"
-        component={HomeScreen}
-      />
+      <Stack.Screen name="Headlines" component={HomeScreen} />
       <Stack.Screen name="News Details" component={NewsDetailsScreen} />
     </Stack.Navigator>
   );
@@ -30,11 +27,7 @@ const HomeStackScreen = () => {
 const BookmarkStackScreen = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Bookmarked"
-        component={BookmarkedScreen}
-
-      />
+      <Stack.Screen name="Bookmarked" component={BookmarkedScreen} />
       <Stack.Screen name="News Details" component={NewsDetailsScreen} />
     </Stack.Navigator>
   );
@@ -87,8 +80,12 @@ export default function App() {
       <AuthProvider>
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="Feed" component={FeedScreen} />
+          
+          <Stack.Screen name="Feed" component={FeedScreen} 
+            options={{
+              headerShown: false
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
       </AuthProvider>
