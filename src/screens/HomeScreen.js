@@ -38,7 +38,7 @@ const HomeScreen = ({ navigation }) => {
           keyExtractor = {(item) => item.title}
           renderItem = {({item}) => {
             return (
-              <View style={styles.content}>
+              <View>
                 <TouchableOpacity
                   onPress = {() => navigation.navigate("News Details", {
                     title: item.title
@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: "#4682B4",
+    backgroundColor: "white",
+    paddingTop: 10,
   },
 
   content: {
