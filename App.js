@@ -39,7 +39,7 @@ const BookmarkStackScreen = () => {
 const Feed = () => {
   return (
     <Drawer.Navigator initialRouteName="Home" headerMode="none">
-      <Drawer.Screen name="Inicio" options={{ drawerInactiveTintColor: 'red' }} component={HomeScreen} />
+      <Drawer.Screen name="Inicio" options={{ drawerInactiveTintColor: 'red' }} component={Inicio} />
       <Drawer.Screen name="Log out"  component={Logout} />
     </Drawer.Navigator>
   );

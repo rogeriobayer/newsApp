@@ -17,7 +17,7 @@ const LoginScreen = ({ navigation }) => {
 
     const [request, response, promptAsync] = useAuthRequest(
         {
-            clientId: 'ylyBsrDA2iBjbimC19Ub6A',
+            clientId: 'FrPIqLo2HyPeDlnJ5kKtxA',
             scopes: ['identity'],
             responseType: 'token',
             // For usage in managed apps using the proxy
