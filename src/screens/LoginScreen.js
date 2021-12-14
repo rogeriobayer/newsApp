@@ -50,13 +50,6 @@ const LoginScreen = ({ navigation }) => {
                     promptAsync();
                 }}
             />
-            <Button
-                disabled={!request}
-                title="Logout Reddit"
-                onPress={() => {
-                    signOut();
-                }}
-            />
             {authState.error ? <Text>{authState.error}</Text> : null}
 
         </View>
