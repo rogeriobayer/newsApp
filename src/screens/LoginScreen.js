@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Button, Input, } from "react-native-elements";
+import { Button,} from "react-native-elements";
 import { Text, View, StyleSheet, Image, } from 'react-native';
 import { AuthContext } from "../context/AuthContext.js";
+import * as WebBrowser from 'expo-web-browser';
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 
 // Endpoint
@@ -12,7 +13,7 @@ const discovery = {
 
 const LoginScreen = ({ navigation }) => {
 
-    const { authState, signIn, tryLocalSignIn } = useContext(AuthContext);
+    const { authState, signIn, signOut, tryLocalSignIn } = useContext(AuthContext);
 
     const [request, response, promptAsync] = useAuthRequest(
         {
@@ -22,18 +23,20 @@ const LoginScreen = ({ navigation }) => {
             // For usage in managed apps using the proxy
             redirectUri: makeRedirectUri({}),
         },
+        
         discovery
     );
 
     useEffect(() => {
+        console.log(response);
         tryLocalSignIn();
-
     }, []);
 
     useEffect(() => {
         if (response?.type === 'success') {
             const { code } = response.params;
             const token = response.authentication.accessToken;
+            console.log(response);
             signIn(token);
         }
     }, [response]);
@@ -45,6 +48,13 @@ const LoginScreen = ({ navigation }) => {
                 title="Login Reddit"
                 onPress={() => {
                     promptAsync();
+                }}
+            />
+            <Button
+                disabled={!request}
+                title="Logout Reddit"
+                onPress={() => {
+                    signOut();
                 }}
             />
             {authState.error ? <Text>{authState.error}</Text> : null}

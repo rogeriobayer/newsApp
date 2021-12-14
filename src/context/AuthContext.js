@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
     }
     else {
       dispatch({ type: 'signOut' });
-      RootNavigation.navigate('Sign in');
+      RootNavigation.navigate('Login');
     }
 
   }
@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
   const signOut = async () => {
     await AsyncStorage.removeItem('access_token'); 
     dispatch({ type: 'signOut' });
-    RootNavigation.navigate('Sign in');
+    RootNavigation.navigate('Login');
   }
 
   return (
