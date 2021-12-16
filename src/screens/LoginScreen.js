@@ -9,8 +9,7 @@ import {
 } from "react-native";
 import { AuthContext } from "../context/AuthContext.js";
 import * as WebBrowser from "expo-web-browser";
-import { Feather } from "@expo/vector-icons";
-import { RedditOutlined } from '@ant-design/icons';
+import { Feather, FontAwesome  } from "@expo/vector-icons";
 import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
 
 // Endpoint
@@ -25,7 +24,7 @@ const LoginScreen = ({ navigation }) => {
 
   const [request, response, promptAsync] = useAuthRequest(
     {
-      clientId: "FrPIqLo2HyPeDlnJ5kKtxA",
+      clientId: "ylyBsrDA2iBjbimC19Ub6A",
       scopes: ["identity"],
       responseType: "token",
       // For usage in managed apps using the proxy
@@ -56,7 +55,7 @@ const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <Text style={styles.greetings}>Bem vindo ao</Text>
+        <Text style={styles.greetings}>Bem-vindo ao</Text>
         <Image
           source={require("../../assets/splash.png")}
           style={{ width: 200, height: 100, resizeMode: "contain" }}
@@ -69,8 +68,7 @@ const LoginScreen = ({ navigation }) => {
           }}
         >
           <View style={styles.buttonReddit}>
-          <RedditOutlined
-              style={{color:"#fff"}}/>
+          <FontAwesome name="reddit" size={20} color="white" />
             <Text style={styles.login}>Faça login com o Reddit</Text>
           </View>
         </TouchableHighlight>
