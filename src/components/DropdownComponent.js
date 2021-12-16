@@ -3,12 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 import { MaterialIcons } from "@expo/vector-icons";
 
-const data = [
-  { label: "Published At", value: "publishedAt" },
-  { label: "Popularity", value: "popularity" },
-  { label: "Relevancy", value: "relevancy" },
-];
-
 const DropdownComponent = ({ onSortChange, items, title }) => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
