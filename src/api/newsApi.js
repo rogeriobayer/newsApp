@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 
-const apiKey = '028ff9f1bc8e45398e36b78fdbbb2b58';
+const apiKey = "5a921d87ed1046f9859b84c51d54f335";
 
 export default axios.create({
-  baseURL: 'https://newsapi.org/v2/',
+  baseURL: "https://newsapi.org/v2/",
   params: {
     apiKey: apiKey,
-  }
+  },
 });
