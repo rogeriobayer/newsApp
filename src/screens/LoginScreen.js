@@ -10,6 +10,7 @@ import {
 import { AuthContext } from "../context/AuthContext.js";
 import * as WebBrowser from "expo-web-browser";
 import { Feather } from "@expo/vector-icons";
+import { RedditOutlined } from '@ant-design/icons';
 import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
 
 // Endpoint
@@ -68,12 +69,8 @@ const LoginScreen = ({ navigation }) => {
           }}
         >
           <View style={styles.buttonReddit}>
-            <Feather
-              style={styles.starIcon}
-              name="gitlab"
-              size={16}
-              color="#ffffff"
-            />
+          <RedditOutlined
+              style={{color:"#fff"}}/>
             <Text style={styles.login}>Faça login com o Reddit</Text>
           </View>
         </TouchableHighlight>

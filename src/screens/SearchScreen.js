@@ -157,7 +157,8 @@ const SearchScreen = ({ navigation }) => {
                   <TouchableOpacity
                     onPress={() =>
                       navigation.navigate("News Details", {
-                        title: item.title,
+                        item: item,
+                        fonte: "search"
                       })
                     }
                   >

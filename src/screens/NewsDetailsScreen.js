@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Text } from "react-native-elements";
-import { View, StyleSheet, Image, Linking } from "react-native";
+import { View, StyleSheet, Image, Linking, ScrollView } from "react-native";
 import { format } from "date-fns";
 import newsApi from "../api/newsApi";
 import { Button } from 'react-native-elements';
@@ -13,7 +13,11 @@ const NewsDetailsScreen = ({ navigation, route }) => {
   const [origem, setOrigem] = useState('');//Separado por causa da nova formatação
 
   useEffect( () => {
-    getNews(route.params.title)
+    if (route.params.fonte=="topheadline"){
+      getNews(route.params.title);
+    }
+
+    else {setNews(route.params.item);}
   }, [] );
 
   async function getNews(titulo){
@@ -49,6 +53,7 @@ const NewsDetailsScreen = ({ navigation, route }) => {
 
 
   return (
+    <ScrollView>
     <View style={styles.tudo}>
       <View style={styles.container}>
         <Text style={styles.titulo}>{(news.title)}</Text>
@@ -74,6 +79,7 @@ const NewsDetailsScreen = ({ navigation, route }) => {
         </View>
       </View>
     </View>
+    </ScrollView>
   );
 };
 

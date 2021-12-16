@@ -41,7 +41,8 @@ const HomeScreen = ({ navigation }) => {
               <View>
                 <TouchableOpacity
                   onPress = {() => navigation.navigate("News Details", {
-                    title: item.title
+                    title: item.title,
+                    fonte: "topheadline"
                   })}
                 >
                   <News 
