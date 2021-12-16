@@ -20,7 +20,8 @@ const BookmarkedScreen = ({ navigation }) => {
                   <View style={styles.content}>
                     <TouchableOpacity
                       onPress = {() => navigation.navigate("News Details", {
-                        title: item.title
+                        title: item.title,
+                        fonte: "topheadline"
                       })}
                     >
                       <News 
