@@ -44,7 +44,6 @@ const SearchScreen = ({ navigation }) => {
           pageSize: 100,
         },
       });
-      console.log(response.data.articles);
       setResults(response.data.articles);
     } catch (err) {
       console.log(err);
@@ -53,7 +52,6 @@ const SearchScreen = ({ navigation }) => {
 
   async function searchCategoryNews(a) {
     try {
-      console.log(a);
       const response = await newsApi.get("top-headlines", {
         params: {
           language: "pt",
@@ -61,7 +59,6 @@ const SearchScreen = ({ navigation }) => {
           pageSize: 100,
         },
       });
-      console.log(response.data.articles);
       setResults(response.data.articles);
     } catch (err) {
       console.log(err);
